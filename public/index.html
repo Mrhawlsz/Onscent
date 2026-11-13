@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ONSCENT | Perfumery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Hanken+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#">ONSCENT</a>
+  <nav><a href="#men">For him</a><a href="#women">For her</a><a href="#order">Your order</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <a class="half him" href="#men"><h1>ONSCENT</h1><p>Black and silver. Scents for him.</p></a>
+    <a class="half her" href="#women"><p>White and gold. Scents for her.</p></a>
+  </section>
+  <section id="men" class="shelf him"><h2>For him</h2><div class="grid" id="men-grid">Loading…</div></section>
+  <section id="women" class="shelf her"><h2>For her</h2><div class="grid" id="women-grid">Loading…</div></section>
+  <section id="order" class="order">
+    <h2>Your order</h2>
+    <div class="order-wrap">
+      <div><ul id="cart"></ul><p class="total">Total: <strong id="total">₱0.00</strong></p></div>
+      <form id="order-form" novalidate>
+        <label>Full name<input name="name" autocomplete="name"></label>
+        <label>Email<input name="email" type="email" autocomplete="email"></label>
+        <label>Mobile number<input name="phone" inputmode="tel" placeholder="09171234567"></label>
+        <label>Delivery address<textarea name="address" rows="3"></textarea></label>
+        <button type="submit">Place order</button>
+        <p id="msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+<footer><p>ONSCENT · Philippines · Add your Facebook/Instagram link and contact number here.</p></footer>
+<script src="app.js"></script>
+</body>
+</html>

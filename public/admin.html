@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ONSCENT Admin</title>
+<style>body{font:1rem/1.5 sans-serif;margin:1.5rem;background:#fbf9f4}table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}
+td,th{border:1px solid #bbb;padding:.5rem;text-align:left}input,select,button{font:inherit;padding:.4rem}#err{color:#a3261a}</style></head>
+<body>
+<h1>ONSCENT orders</h1>
+<label>Admin password <input id="pw" type="password"></label> <button id="go">Load orders</button>
+<p id="err" role="status"></p>
+<table><thead><tr><th>#</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th></th></tr></thead><tbody id="rows"></tbody></table>
+<script>
+const S = ['pending','confirmed','shipped','delivered','cancelled'];
+const api = (url, opts = {}) => fetch(url, { ...opts, headers: { 'Content-Type': 'application/json', 'x-admin-password': document.getElementById('pw').value } });
+async function load() {
+  const r = await api('/api/orders'), d = await r.json();
+  document.getElementById('err').textContent = r.ok ? '' : d.error;
+  if (!r.ok) return;
+  document.getElementById('rows').innerHTML = d.map(o => `<tr><td>${o.order_id}</td>
+    <td>${o.full_name}<br>${o.phone}<br>${o.address}</td><td>${o.items}</td><td>₱${o.total}</td>
+    <td><select onchange="setStatus(${o.order_id},this.value)">${S.map(s => `<option ${s == o.status ? 'selected' : ''}>${s}</option>`).join('')}</select></td>
+    <td><button onclick="del(${o.order_id})">Delete</button></td></tr>`).join('');
+}
+async function setStatus(id, status) { await api('/api/orders/' + id, { method: 'PATCH', body: JSON.stringify({ status }) }); load(); }
+async function del(id) { if (confirm('Delete order #' + id + '?')) { await api('/api/orders/' + id, { method: 'DELETE' }); load(); } }
+document.getElementById('go').onclick = load;
+</script></body></html>
