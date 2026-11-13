@@ -1,5 +1,11 @@
 # ONSCENT starter
 
+## Hii syug, basically i prompted lang claude on an example website based on our pdfs (appdev & infoman instructions)
+- Bali ang purpose lang sana neto is that we get to see the final structure on what we need to do forda projects
+- still trying to understand it kung paano nangyari toh but its so cool try nyo irun hehe
+- anyways install nyo node.js rinn
+- U need (terminal <- either sa shell or sa vscode nalang | MySQL cli | and yun lang i think)
+
 ## Run it
 1. Install Node.js and MySQL (XAMPP's MySQL works too).
 2. Create the database: `mysql -u root -p < schema.sql` (or paste schema.sql into phpMyAdmin/Workbench).
