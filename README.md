@@ -1,6 +1,7 @@
 # ONSCENT starter
 
 ## Hii syug, basically i prompted lang claude on an example website based on our pdfs (appdev & infoman instructions)
+Claude link : https://claude.ai/share/db3369c6-cfb3-4508-a76d-60b930670813
 - Bali ang purpose lang sana neto is that we get to see the final structure on what we need to do forda projects
 - still trying to understand it kung paano nangyari toh but its so cool try nyo irun hehe
 - anyways install nyo node.js rinn
